@@ -8,15 +8,24 @@
                     android:shape="rectangle">
                     <solid
                         android:color="#ff0000"/>
+                    <corners
+                        android:radius="11.5dp"/>
                 </shape>
             </item>
             <item
-                android:top="2dp"
-                android:left="2dp"
-                android:right="2dp"
-                android:bottom="2dp">
+                android:top="1dp"
+                android:left="1dp"
+                android:right="1dp"
+                android:bottom="1dp">
                 <shape android:shape="rectangle">
+<!--                    <gradient-->
+<!--                        android:startColor="#FFFFFF"-->
+<!--                        android:endColor="#000000"-->
+<!--                        android:angle="270"-->
+
                     <solid android:color="#FFFFFF" />
+                    <corners
+                        android:radius="10dp"/>
                 </shape>
             </item>
         </layer-list>
@@ -25,11 +34,32 @@
     <item android:state_pressed="true">
         <layer-list>
             <item>
+                <shape
+                    android:shape="rectangle">
+                    <solid
+                        android:color="#ff0000"/>
+                    <corners
+                        android:radius="11.5dp"/>
+                </shape>
+            </item>
+            <item
+                android:top="1dp"
+                android:left="1dp"
+                android:right="1dp"
+                android:bottom="1dp">
                 <shape android:shape="rectangle">
-                    <solid android:color="#000000" />
+                    <!--                    <gradient-->
+                    <!--                        android:startColor="#FFFFFF"-->
+                    <!--                        android:endColor="#000000"-->
+                    <!--                        android:angle="270"-->
+
+                    <solid android:color="#DDDDDD" />
+                    <corners
+                        android:radius="10dp"/>
                 </shape>
             </item>
         </layer-list>
+
     </item>
 
 </selector>
