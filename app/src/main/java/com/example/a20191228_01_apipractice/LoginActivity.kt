@@ -1,8 +1,11 @@
 package com.example.a20191228_01_apipractice
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
+import com.example.a20191228_01_apipractice.utils.ConnectServer
 import kotlinx.android.synthetic.main.activity_login.*
+import org.json.JSONObject
 
 class LoginActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +34,23 @@ class LoginActivity : BaseActivity() {
                 return@setOnClickListener
             }
 //        여기의 코드는 ID/ PW가 모두 정상적이여야만 실행 가능
-            Toast.makeText(mContext, "정상 입력이라 로그인",Toast.LENGTH_SHORT).show()
+//            Toast.makeText(mContext, "정상 입력이라 로그인",Toast.LENGTH_SHORT).show()
+            ConnectServer.postRequestLogin(mContext, inputId, inputPw, object : ConnectServer.JsonResponseHandler{
+                override fun onResponse(json: JSONObject) {
+                    Log.d("서버응답json",json.toString())
+
+//                    서버에서 돌려주는 code가 몇인지 "Int"값 확인
+                    val code = json.getInt("code")
+
+                    runOnUiThread {
+                        if (code == 200) {
+                            Toast.makeText(mContext, "로그인 성공", Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(mContext, "로그인 실패", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+            })
         }
 
 
