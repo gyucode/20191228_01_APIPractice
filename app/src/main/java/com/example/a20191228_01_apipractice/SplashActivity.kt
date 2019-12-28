@@ -33,7 +33,7 @@ class SplashActivity : BaseActivity() {
             else{
 //            로그인 토큰이 빈칸이 아니다 => 저장된 토큰이 있다
 //            로그인 화면이 아니라, 메인화면 보여줌
-                val intent = Intent(mContext, MyProfileActivity::class.java)
+                val intent = Intent(mContext, MainActivity::class.java)
                 startActivity(intent)
                 finish()
             }
