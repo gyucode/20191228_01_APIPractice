@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import com.example.a20191228_01_apipractice.datas.User
 import com.example.a20191228_01_apipractice.utils.ConnectServer
 import com.example.a20191228_01_apipractice.utils.ContextUtil
 import kotlinx.android.synthetic.main.activity_main.*
@@ -55,18 +56,25 @@ class MainActivity : BaseActivity() {
                 Log.d("내정보 서버응답",json.toString())
 
                 val code = json.getInt("code")
-                if(code == 200){
-                    val data = json.getJSONObject("data")
-                    val user = data.getJSONObject("user")
 
-                    val userName = user.getString("name")
-                    val userPhoneNum = user.getString("phone")
+                runOnUiThread {
+                    if(code == 200){
+                        val data = json.getJSONObject("data")
+                        val user = data.getJSONObject("user")
 
-                    nameTxt.text = userName
-                    phoneTxt.text = userPhoneNum
-                }
-                else{
-                    Toast.makeText(mContext,"서버에 문제가 있습니다",Toast.LENGTH_SHORT).show()
+                        val loginUser = User.getUserObjectFromJson(user)
+
+                        val userName = loginUser.name
+                        val userPhoneNum = loginUser.phoneNum
+
+                        nameTxt.text = userName
+                        phoneTxt.text = userPhoneNum
+                        loginIdTxt.text = loginUser.loginId
+                    }
+                    else{
+                        Toast.makeText(mContext,"서버에 문제가 있습니다",Toast.LENGTH_SHORT).show()
+                    }
+
                 }
             }
         })
