@@ -1,7 +1,9 @@
 package com.example.a20191228_01_apipractice
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import androidx.core.view.get
 import com.example.a20191228_01_apipractice.adapters.UserAdapter
 import com.example.a20191228_01_apipractice.datas.User
 import com.example.a20191228_01_apipractice.utils.ConnectServer
@@ -20,7 +22,14 @@ class MainActivity : BaseActivity() {
         setValue()
     }
     override fun setupEvents() {
+        userListView.setOnItemClickListener { parent, view, position, id ->
 
+            val clickedUser = userList.get(position)
+
+            val intent = Intent(mContext, UserInfoActivity::class.java)
+            intent.putExtra("user", clickedUser)
+            startActivity(intent)
+        }
     }
 
     override fun setValue() {
@@ -37,6 +46,9 @@ class MainActivity : BaseActivity() {
 
                 runOnUiThread {
                     if(code == 200){
+
+                        userList.clear()
+
                         val data = json.getJSONObject("data")
                         val users = data.getJSONArray("users")
 
@@ -45,6 +57,8 @@ class MainActivity : BaseActivity() {
 
                             val userDataObject = User.getUserObjectFromJson(userJson)
                             userList.add(userDataObject)
+
+
 
                         }
                         mUserAdapter?.notifyDataSetChanged()

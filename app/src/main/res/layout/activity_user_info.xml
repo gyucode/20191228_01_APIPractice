@@ -10,6 +10,7 @@
     tools:context=".UserInfoActivity">
 
     <TextView
+        android:id="@+id/userIdTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -17,18 +18,21 @@
         android:textSize="18sp" />
 
     <TextView
+        android:id="@+id/userNameTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="이름자리"
         android:textSize="18sp" />
     <TextView
+        android:id="@+id/userPhoneNumTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="폰번자리"
         android:textSize="18sp" />
     <TextView
+        android:id="@+id/userMemoTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
